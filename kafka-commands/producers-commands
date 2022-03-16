@@ -1,0 +1,7 @@
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic players
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic products
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic score-events
+bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=|" --topic players < data/players.data
+bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=|" --topic products < data/products.data
+bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic score-events
+bin/kafka-streams-application-reset.sh --application-id kstream-stateful
